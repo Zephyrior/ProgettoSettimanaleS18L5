@@ -41,7 +41,7 @@ public class DipendenteController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteDipendente(Long id){
+    public void deleteDipendente(@PathVariable Long id){
         dipendenteService.deleteDipendente(id);
     }
 

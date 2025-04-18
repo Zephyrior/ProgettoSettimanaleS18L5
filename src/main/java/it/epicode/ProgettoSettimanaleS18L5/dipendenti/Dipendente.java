@@ -1,5 +1,6 @@
 package it.epicode.ProgettoSettimanaleS18L5.dipendenti;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import it.epicode.ProgettoSettimanaleS18L5.prenotazioni.Prenotazione;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -36,6 +37,7 @@ public class Dipendente {
     private String fotoProfilo = "https://ui-avatars.com/api/fotoprofilodefault";
 
     @OneToMany(mappedBy = "dipendente")
+    @JsonIgnoreProperties("dipendente")
     private List<Prenotazione> prenotazioni = new ArrayList<>();
 
 

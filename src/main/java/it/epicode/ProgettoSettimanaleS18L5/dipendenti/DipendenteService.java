@@ -2,6 +2,7 @@ package it.epicode.ProgettoSettimanaleS18L5.dipendenti;
 
 import it.epicode.ProgettoSettimanaleS18L5.cloudinary.CloudinaryService;
 import it.epicode.ProgettoSettimanaleS18L5.common.CommonResponse;
+import it.epicode.ProgettoSettimanaleS18L5.prenotazioni.PrenotazioneRequest;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,11 @@ public class DipendenteService {
     private CloudinaryService cloudinaryService;
 
     //verifica se il dipendente può effettuare la prenotazione alla data interessata
-    public boolean canReserve(Dipendente dipendente, LocalDate dataPrenotazione){
+    public boolean canReserve(Dipendente dipendente, PrenotazioneRequest request){
         return dipendente.getPrenotazioni()
                 .stream()
                 .noneMatch(prenotazione -> prenotazione.getDataPrenotazione()
-                .equals(dataPrenotazione));
+                .equals(request.getDataPrenotazione()));
     };
 
     //recupera tutti i dipendenti

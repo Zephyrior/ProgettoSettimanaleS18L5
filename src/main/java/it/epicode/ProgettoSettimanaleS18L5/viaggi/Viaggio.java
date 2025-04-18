@@ -1,5 +1,6 @@
 package it.epicode.ProgettoSettimanaleS18L5.viaggi;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import it.epicode.ProgettoSettimanaleS18L5.prenotazioni.Prenotazione;
 import it.epicode.ProgettoSettimanaleS18L5.stato.Stato;
 import jakarta.persistence.*;
@@ -35,6 +36,7 @@ public class Viaggio {
     private Stato stato;
 
     @OneToMany(mappedBy = "viaggio")
+    @JsonIgnoreProperties("viaggio")
     private List<Prenotazione> prenotazioni = new ArrayList<>();
 
 }

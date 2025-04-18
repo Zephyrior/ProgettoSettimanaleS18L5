@@ -21,7 +21,8 @@ public class DipendenteRequest {
     @NotBlank(message = "Cognome non può essere vuoto")
     private String cognome;
 
-    @Email
+    @Email(message = "Email non valida")
+    @NotBlank(message = "Email non può essere vuota")
     private String email;
 
     private String fotoProfilo;
