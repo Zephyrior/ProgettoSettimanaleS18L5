@@ -14,4 +14,6 @@ public class PrenotazioneResponse {
     private Long id;
     private LocalDate dataPrenotazione;
     private String preferenze;
+    private Long dipendente_id;
+    private Long viaggio_id;
 }

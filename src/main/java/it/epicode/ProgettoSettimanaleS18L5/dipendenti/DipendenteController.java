@@ -29,7 +29,7 @@ public class DipendenteController {
     }
 
     @GetMapping("/{id}")
-    public Dipendente findById(Long id){
+    public DipendenteResponse findById(Long id){
         return dipendenteService.findById(id);
     }
 

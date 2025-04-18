@@ -35,10 +35,16 @@ public class DipendenteService {
         return dipendenteRepository.findAll();
     }
 
-    public Dipendente findById(Long id){
-        return dipendenteRepository
+    public DipendenteResponse findById(Long id){
+        Dipendente dipendente = dipendenteRepository
                 .findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Dipendente non trovato"));
+
+        DipendenteResponse response = new DipendenteResponse();
+        response.setNomeCognome(dipendente.getNome() + " " + dipendente.getCognome());
+        BeanUtils.copyProperties(dipendente, response);
+
+        return response;
     }
 
     //salva un nuovo dipendente
