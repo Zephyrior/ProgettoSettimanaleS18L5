@@ -20,7 +20,7 @@ public class Dipendente {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(unique = true, nullable = false, length = 10)
+    @Column(unique = true, nullable = false, length = 20)
     private String username;
 
     @Column(nullable = false, length = 50)
@@ -29,10 +29,14 @@ public class Dipendente {
     @Column(nullable = false, length = 50)
     private String cognome;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 30)
     private String email;
+
+    @Column
+    private String fotoProfilo = "https://ui-avatars.com/api/fotoprofilodefault";
 
     @OneToMany(mappedBy = "dipendente")
     private List<Prenotazione> prenotazioni = new ArrayList<>();
+
 
 }

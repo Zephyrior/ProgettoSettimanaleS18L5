@@ -1,0 +1,34 @@
+package it.epicode.ProgettoSettimanaleS18L5.dipendenti;
+
+import com.github.javafaker.Faker;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class DipendenteRunner implements CommandLineRunner {
+
+    @Autowired
+    private Faker faker;
+
+    @Autowired
+    private DipendenteRepository dipendenteRepository;
+
+
+    @Override
+    public void run(String... args) throws Exception {
+
+        if (dipendenteRepository.count() == 0) {
+            for (int i = 0; i < 10; i++) {
+                Dipendente dipendente = new Dipendente();
+                dipendente.setUsername(faker.name().username());
+                dipendente.setNome(faker.name().firstName());
+                dipendente.setCognome(faker.name().lastName());
+                dipendente.setEmail(faker.internet().emailAddress());
+
+                dipendenteRepository.save(dipendente);
+            }
+        }
+
+    }
+}
