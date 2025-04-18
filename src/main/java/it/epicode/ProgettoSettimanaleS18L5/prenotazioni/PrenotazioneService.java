@@ -78,6 +78,7 @@ public class PrenotazioneService {
         return response;
     }
 
+    // trova tutte le prenotazioni
     public List<PrenotazioneResponse> findAll() {
         List<Prenotazione> prenotazioni = prenotazioneRepository.findAll();
         return prenotazioni.stream()
@@ -88,5 +89,13 @@ public class PrenotazioneService {
                             p.getDipendente().getId(),
                             p.getViaggio().getId()))
                 .toList();
+    }
+
+    public void delete(Long id) {
+        Prenotazione prenotazione = prenotazioneRepository
+                .findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Prenotazione non trovata"));
+
+        prenotazioneRepository.deleteById(id);
     }
 }
