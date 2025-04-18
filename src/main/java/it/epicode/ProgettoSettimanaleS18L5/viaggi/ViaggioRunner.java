@@ -35,7 +35,8 @@ public class ViaggioRunner implements CommandLineRunner {
 
             for (int i = 0; i < 5; i++) {
                 Viaggio viaggioPassato = new Viaggio();
-                viaggioPassato.setDataPartenza(LocalDate.now().minusDays(((long) Math.random() * 7)));
+                int random = (int) (Math.random() * 7);
+                viaggioPassato.setDataPartenza(LocalDate.now().minusDays(random));
                 viaggioPassato.setDestinazione(faker.address().country());
                 viaggioPassato.setStato(Stato.COMPLETATO);
 
